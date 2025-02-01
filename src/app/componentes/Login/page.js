@@ -1,17 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import Notificacion from "../../data/Notificacion";
+import Logins from "../../data/Logins";
 import { ClipboardIcon } from "@heroicons/react/24/outline";
 import Notification from "../../components/widgets/Notification";
-import NotificacionD from "./NotificacionD";
 
-export default function Notificaciones() {
-  const [Alerta, SetAlerta] = useState(0);
+export default function Login() {
   const [OpenNotification, setNotification] = useState({
     Open: false,
     Message: "",
-    Derecha: false,
   });
 
   //funcion para copiar al portapeles
@@ -31,24 +28,6 @@ export default function Notificaciones() {
       });
     }
   };
-  const renderizar = (id) => {
-    switch (id) {
-      case 1:
-        return setNotification({
-          ...OpenNotification,
-          Open: true,
-          Message: "Notificación centrada",
-        });
-      case 2:
-        return setNotification({
-          ...OpenNotification,
-          Derecha: true,
-          Message: "Notificación derecha",
-        });
-      default:
-        return null;
-    }
-  };
   return (
     <>
       <Notification
@@ -56,39 +35,28 @@ export default function Notificaciones() {
         abrir={OpenNotification.Open}
         cerrar={() => setNotification({ ...OpenNotification, Open: false })}
       />
-      <NotificacionD
-        mensaje={OpenNotification.Message}
-        abrir={OpenNotification.Derecha}
-        cerrar={() => setNotification({ ...OpenNotification, Derecha: false })}
-      />
-      {renderizar()}
+
       {/* CONTENIDO DE LAS PAGUINAS  */}
       <div className="flex flex-row p-4 gap-2">
         <div className="bg-slate-100 dark:bg-black/40  w-full rounded-2xl p-10 items-center justify-center content-center">
-          <h1 className="text-8xl font-semibold p-2">Notificaciones</h1>
+          <h1 className="text-8xl font-semibold p-2">Login</h1>
           <p className="text-xl p-2">
-            En esta sección puedes algunos tipos de notificaciones.
+            En esta sección puedes encontrar varios formularios de login.
           </p>
         </div>
       </div>
       <div>
-        {Notificacion &&
-          Notificacion.length != 0 &&
-          Notificacion.map(({ id, items, titleComponent }, index) => {
+        {Logins &&
+          Logins.length != 0 &&
+          Logins.map(({ id, items, titleComponent, example }, index) => {
             return (
               <div key={id}>
                 <div className="ml-4 p-2 gap-2 text-2xl font-bold">
                   {titleComponent}
                 </div>
                 <div className="p-4 bg-blue-100/80 mx-10 rounded-2xl dark:bg-black/20 flex flex-col">
-                  <div className="text-center">
-                    <button
-                      className=" p-4 rounded-3xl bg-blue-900 text-xl text-white "
-                      href="#empezar"
-                      onClick={() => renderizar(id)}
-                    >
-                      Mostrar
-                    </button>
+                  <div className="mb-3 text-center h-full w-full bg-slate-50 dark:bg-white/[.06] rounded-2xl p-4">
+                    {example}
                   </div>
                   {items.map(({ n, Title, Content }, index) => {
                     return (

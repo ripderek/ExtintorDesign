@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 text-center md:justify-between">
         <div className="relative w-[180px] h-[38px]">
           <Image
-            src="/Extintor_logo.png"
+            src="./Extintor_logo.png"
             alt="Light Mode Logo"
             width={180}
             height={38}

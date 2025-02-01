@@ -21,6 +21,11 @@ export const routes_components = [
         name: "Notificaciones",
         path: "/componentes/Notificaciones",
       },
+      {
+        //icon: (className) => <CalendarIcon className={className} />,
+        name: "Login",
+        path: "/componentes/Login",
+      },
     ],
   },
 ];
